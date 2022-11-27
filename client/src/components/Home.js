@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import '../App.css';
+import Visualizer from '../Visualizer';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
 
 const getToken = () => {
   const token = sessionStorage.getItem("sessionToken");
@@ -32,7 +37,7 @@ const Home = () => {
 
   return (
     <div className="container-md mx-auto">
-      <h1>Welcome to AlgoViz {details.email}</h1>
+      <Visualizer></Visualizer>
     </div>
   );
 };
