@@ -4,9 +4,13 @@ const app = express();
 const connectDB = require("./middleware/dbconnect");
 
 const cors = require("cors");
+const bodyParser = require("body-parser");
 
 // Init Middleware
-cors();
+app.use(cors());
+
+// parse application/json
+app.use(bodyParser.json());
 
 // Connect Database
 connectDB();
@@ -19,7 +23,8 @@ app.get("/", (req, res) => {
 });
 
 // Routes
-app.get("/api/auth", require("./routes/auth"));
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/request", require("./routes/request"));
 
 // Undefined Routes
 app.get("*", async (req, res) => {

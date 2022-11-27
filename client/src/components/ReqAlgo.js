@@ -1,14 +1,41 @@
 import { Tab } from "bootstrap";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const ReqAlgo = () => {
-  const handleChange = () => {
-    return 0;
+  const [details, setDetails] = useState({
+    title: "",
+    body: "",
+    category: "",
+  });
+
+  const handleChange = (e) => {
+    const newDetails = { ...details };
+    if (e.target.name === "picPath") {
+      newDetails[e.target.name] = e.target.files[0];
+    } else {
+      newDetails[e.target.name] = e.target.value;
+    }
+    setDetails(newDetails);
   };
 
-  const handleSubmit = () => {
-    return 0;
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      console.log(details);
+      const createPost = await axios.post(
+        "http://localhost:5000/api/request/",
+        details
+      );
+
+      if (createPost) {
+        alert("Post Created");
+        navigate("/");
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const navigate = useNavigate();
@@ -79,7 +106,6 @@ const ReqAlgo = () => {
               <div className="createPostDiv">
                 <form
                   className="createPostForm"
-                  encType="multipart/form-data"
                   method="post"
                   onSubmit={handleSubmit}
                 >
@@ -108,7 +134,7 @@ const ReqAlgo = () => {
                     <label>Category: </label>
                     <input
                       type="text"
-                      name="duration"
+                      name="category"
                       placeholder=" Enter Category"
                       onChange={handleChange}
                     />
