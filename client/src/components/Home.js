@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 const getToken = () => {
   const token = sessionStorage.getItem("sessionToken");
@@ -10,14 +11,13 @@ const getDetails = async () => {
   try {
     const sessionToken = getToken();
 
-    const res = await axios.get(
-      "https://www.googleapis.com/oauth2/v1/tokeninfo",
-      {
-        params: { id_token: `${sessionToken}` },
-      }
-    );
+    const sessionDetails = sessionToken.split(".");
+    console.log(sessionDetails);
 
-    return res.data;
+    var decoded = jwt_decode(sessionDetails[1]);
+    console.log(decoded);
+
+    // return res.data;
   } catch (err) {
     console.log(err);
   }
@@ -32,6 +32,7 @@ const Home = () => {
 
   return (
     <div className="container-md mx-auto">
+      {console.log(details)}
       <h1>Welcome to AlgoViz {details.email}</h1>
     </div>
   );
