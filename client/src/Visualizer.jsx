@@ -155,132 +155,121 @@ export default class Visualizer extends Component {
             </button>
           </div>
           <div className="flex space-x-4">
-
-          <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-//<<<<<<< main
-            //<li>
-//               <a class="text-lg text-gray-400 hover:text-gray-500" href="/home">
-//                 Home
-//               </a>
-//             </li>
-//             <li>
-//               <a
-//                 href="#"
-//                 class="text-lg text-gray-400 hover:text-gray-500"
-//                 onClick={() => {
-//                   if (!this.state.rendering) {
-//                     this.setState({
-//                       mode: "faq",
-//                     });
-//                   }
-//                 }}
-//               >
-//                 FAQ
-//               </a>
-//             </li>
-//           </ul>
-//=======
-//>>>>>>> main
-          <div class={"dropdown" + invisibleOrNot}>
-            <button
-              class="btn btn-danger dropdown-toggle navbtn"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              disabled={this.state.rendering}
-            >
-              {this.state.currentAlgorithm == null
-                ? "Algorithms"
-                : this.state.currentAlgorithm}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+              <div class={"dropdown" + invisibleOrNot}>
+                <button
+                  class="btn btn-danger dropdown-toggle navbtn"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  disabled={this.state.rendering}
+                >
+                  {this.state.currentAlgorithm == null
+                    ? "Algorithms"
+                    : this.state.currentAlgorithm}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li>
+                    {algorithms.map((algorithm, algoId) => {
+                      return (
+                        <button
+                          type="button"
+                          class="btn btn-light navbtn"
+                          onClick={() => {
+                            this.state.setAlgorithm(algoId);
+                            this.setState({
+                              currentAlgorithm: this.state.algorithms[algoId],
+                            });
+                          }}
+                        >
+                          {algorithm}
+                        </button>
+                      );
+                    })}
+                  </li>
+                </div>
+              </div>
               <li>
-                {algorithms.map((algorithm, algoId) => {
-                  return (
+                <a
+                  class="text-lg text-gray-400 hover:text-gray-500"
+                  href="/home"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-lg text-gray-400 hover:text-gray-500"
+                  onClick={() => {
+                    if (!this.state.rendering) {
+                      this.setState({
+                        mode: "faq",
+                      });
+                    }
+                  }}
+                >
+                  FAQ
+                </a>
+              </li>
+
+              <div class={"dropdown" + invisibleOrNot}>
+                <button
+                  class="btn btn-outline-success dropdown-toggle navbtn"
+                  type="button"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  disabled={this.state.rendering}
+                >
+                  Actions
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li>
                     <button
                       type="button"
                       class="btn btn-light navbtn"
-                      onClick={() => {
-                        this.state.setAlgorithm(algoId);
-                        this.setState({
-                          currentAlgorithm: this.state.algorithms[algoId],
-                        });
-                      }}
+                      onClick={() => this.state.goFunction()}
+                      data-toggle={
+                        this.state.currentAlgorithm === null ? "modal" : ""
+                      }
+                      data-target="#setAlgoModal"
+                      disabled={
+                        this.state.mode === "ai" &&
+                        this.state.currentAlgorithm === "Minimax"
+                      }
                     >
-                      {algorithm}
+                      Go!
                     </button>
-                  );
-                })}
-              </li>
-            </div>
-            </div>
-            <li>
-              <a class="text-lg text-gray-400 hover:text-gray-500" href="/home">
-                Home
-              </a>
-            </li>
-            
-            
-            <div class={"dropdown" + invisibleOrNot} >
-            <button
-              class="btn btn-outline-success dropdown-toggle navbtn"
-              type="button"
-              id="dropdownMenuButton"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-              disabled={this.state.rendering}
-            >
-              Actions
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <li>
-                <button
-                  type="button"
-                  class="btn btn-light navbtn"
-                  onClick={() => this.state.goFunction()}
-                  data-toggle={
-                    this.state.currentAlgorithm === null ? "modal" : ""
-                  }
-                  data-target="#setAlgoModal"
-                  disabled={
-                    this.state.mode === "ai" &&
-                    this.state.currentAlgorithm === "Minimax"
-                  }
-                >
-                  Go!
-                </button>
-                <button
-                  type="button"
-                  class="btn btn-light navbtn"
-                  onClick={() => this.state.resetFunction()}
-                >
-                  Reset
-                </button>
-              </li>
-            </div>
-            </div>
-          </ul>
-
-          
+                    <button
+                      type="button"
+                      class="btn btn-light navbtn"
+                      onClick={() => this.state.resetFunction()}
+                    >
+                      Reset
+                    </button>
+                  </li>
+                </div>
+              </div>
+            </ul>
           </div>
           <div className="flex space-x-4">
-          <a
-            class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
-            href="/request"
-          >
-            Request Algorithm
-          </a>
-          <a
-            class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
-            href="/request"
-          >
-            Share Algorithm
-          </a>
+            <a
+              class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
+              href="/request"
+            >
+              Request Algorithm
+            </a>
+            <a
+              class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
+              href="/request"
+            >
+              Share Algorithm
+            </a>
           </div>
-          
         </nav>
 
         <div class="modal fade" id="setAlgoModal" role="dialog">
