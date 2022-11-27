@@ -21,6 +21,7 @@ app.get("/", (req, res) => {
 // Routes
 app.get("/api/auth", require("./routes/auth"));
 
+// Undefined Routes
 app.get("*", async (req, res) => {
   try {
     console.log("Undefined Route Accessed");
