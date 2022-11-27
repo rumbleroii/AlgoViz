@@ -44,9 +44,11 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="container-md mx-auto">
-      <Visualizer></Visualizer>
-    </div>
+    <>
+      <div>
+        <Visualizer></Visualizer>
+      </div>
+    </>
   );
 };
 
