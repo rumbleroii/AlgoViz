@@ -1,12 +1,9 @@
-import { get } from "jquery";
 import React, { Component, useState } from "react";
-import TextLoop from "react-text-loop";
 import PathFindingVisualizer from "./PathFindingVisualizer/PathFindingVisualizer";
 import SortingVisualizer from "./SortingVisualizer/SortingVisualizer";
 import Faq from "./components/Faq";
 import Req from "./components/Req"
 import "./Visualizer.css";
-
 import jwt_decode from "jwt-decode";
 
 const getToken = () => {
@@ -22,9 +19,9 @@ export default class Visualizer extends Component {
       rendering: false,
       algorithms: [],
       currentAlgorithm: null,
-      goFunction: () => {},
-      resetFunction: () => {},
-      setAlgorithm: () => {},
+      goFunction: () => { },
+      resetFunction: () => { },
+      setAlgorithm: () => { },
       sortingClicked: false,
       pathClicked: false,
       AIClicked: false,
@@ -82,7 +79,7 @@ export default class Visualizer extends Component {
           </div>
         </div>
       );
-    }else if (this.state.mode === "req") {
+    } else if (this.state.mode === "req") {
       renderObj = (
         <div class="welbotron">
           <div class="container welc">
@@ -91,7 +88,7 @@ export default class Visualizer extends Component {
           </div>
         </div>
       );
-    } 
+    }
     else {
       renderObj = (
         <div class="welbotron">
@@ -237,7 +234,7 @@ export default class Visualizer extends Component {
                     }
                   }}
                 >
-                 Requests
+                  Requests
                 </a>
               </li>
 
@@ -289,12 +286,16 @@ export default class Visualizer extends Component {
             >
               Request Algorithm
             </a>
-            <a
+            <button
               class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
-              href="/request"
+              onClick={ () =>{
+                navigator.clipboard.writeText("http://localhost:3000/home#").then(() => {
+                  alert("Copied to clipboard")
+
+              })}}
             >
               Share Algorithm
-            </a>
+            </button>
           </div>
         </nav>
 
