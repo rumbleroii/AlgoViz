@@ -48,27 +48,33 @@ const Login = () => {
           </div>
           <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
             <li>
+            {getToken()!=null &&
               <a class="text-lg text-gray-400 hover:text-gray-500" href="/home">
                 Home
               </a>
+            }
             </li>
           </ul>
+          {getToken()==null ?
           <a
             class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200"
             href="/"
           >
             Sign In / Register
           </a>
+          :
           <a
             class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
             href="/request"
           >
             Request Algorithm
           </a>
+          }
         </nav>
       </body>
       <div className="h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
+        {getToken()==null ?
           <div>
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
               Welcome To AlgoViz
@@ -80,8 +86,18 @@ const Login = () => {
               <GoogleOAuthProvider clientId="686237414426-i403mqs4n53kj8n3e7m59nobp91dks41.apps.googleusercontent.com">
                 <GoogleLogin onSuccess={onSuccess} onError={onError} />
               </GoogleOAuthProvider>
-            </div>
-          </div>
+            </div>  
+          </div> 
+          :
+          <div>
+            <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+              Welcome To AlgoViz
+            </h2>
+            <p className="mt-2 text-center text-sm text-gray-600 pb-5">
+              Click on home to start visualising algorithms
+            </p> 
+          </div> 
+        }
         </div>
       </div>
     </>

@@ -3,6 +3,7 @@ import React, { Component, useState } from "react";
 import TextLoop from "react-text-loop";
 import PathFindingVisualizer from "./PathFindingVisualizer/PathFindingVisualizer";
 import SortingVisualizer from "./SortingVisualizer/SortingVisualizer";
+import Faq from "./components/Faq";
 import "./Visualizer.css";
 
 import jwt_decode from "jwt-decode";
@@ -71,6 +72,15 @@ export default class Visualizer extends Component {
           />
         </div>
       );
+    } else if (this.state.mode === "faq") {
+      renderObj = (
+        <div class="welbotron">
+          <div class="container welc">
+            <h1 class="welcome">Frequently Asked Questions (FAQ)</h1>
+            <Faq />
+          </div>
+        </div>
+      );
     } else {
       renderObj = (
         <div class="welbotron">
@@ -123,7 +133,8 @@ export default class Visualizer extends Component {
       );
     }
     let invisibleOrNot = "";
-    if (this.state.mode === "main") invisibleOrNot = " invisible";
+    if (this.state.mode === "main" || this.state.mode === "faq")
+      invisibleOrNot = " invisible";
     let algorithms = this.state.algorithms;
     return (
       <>
@@ -143,13 +154,33 @@ export default class Visualizer extends Component {
               </svg>
             </button>
           </div>
+          <div className="flex space-x-4">
+
           <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-            <li>
-              <a class="text-lg text-gray-400 hover:text-gray-500" href="/home">
-                Home
-              </a>
-            </li>
-          </ul>
+//<<<<<<< main
+            //<li>
+//               <a class="text-lg text-gray-400 hover:text-gray-500" href="/home">
+//                 Home
+//               </a>
+//             </li>
+//             <li>
+//               <a
+//                 href="#"
+//                 class="text-lg text-gray-400 hover:text-gray-500"
+//                 onClick={() => {
+//                   if (!this.state.rendering) {
+//                     this.setState({
+//                       mode: "faq",
+//                     });
+//                   }
+//                 }}
+//               >
+//                 FAQ
+//               </a>
+//             </li>
+//           </ul>
+//=======
+//>>>>>>> main
           <div class={"dropdown" + invisibleOrNot}>
             <button
               class="btn btn-danger dropdown-toggle navbtn"
@@ -184,9 +215,15 @@ export default class Visualizer extends Component {
                 })}
               </li>
             </div>
-          </div>
-
-          <div class={"dropdown" + invisibleOrNot}>
+            </div>
+            <li>
+              <a class="text-lg text-gray-400 hover:text-gray-500" href="/home">
+                Home
+              </a>
+            </li>
+            
+            
+            <div class={"dropdown" + invisibleOrNot} >
             <button
               class="btn btn-outline-success dropdown-toggle navbtn"
               type="button"
@@ -224,19 +261,26 @@ export default class Visualizer extends Component {
                 </button>
               </li>
             </div>
+            </div>
+          </ul>
+
+          
           </div>
-          <a
-            class="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200"
-            href="/"
-          >
-            Sign In / Register
-          </a>
+          <div className="flex space-x-4">
           <a
             class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
             href="/request"
           >
             Request Algorithm
           </a>
+          <a
+            class="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200"
+            href="/request"
+          >
+            Share Algorithm
+          </a>
+          </div>
+          
         </nav>
 
         <div class="modal fade" id="setAlgoModal" role="dialog">
