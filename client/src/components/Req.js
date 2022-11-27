@@ -4,26 +4,20 @@ import "bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.js";
 
-const questions = [
-  {
-    question: "Cannot find a desired algorithm.",
-    answer: "Please submit a request for a new algorithm, by clicking the 'Request Algorithm' on the top right of the webpage.",
-  },
-  {
-    question: "Submission Request for new algorithm is denied.",
-    answer: "Please look at already existing algorithms or already exsiting requests for new algorithms by clickin on 'Requests'.",
-  },
-  {
-    question: "How to share a particular algorithm?",
-    answer: "Please click on 'Share Algorithm' on the top right of the webpage.",
-  },
-  {
-    question: "Does this work on mobile?",
-    answer: "Webpage is sutiable for all platforms including mobile.",
-  },
-];
+const Req = () => {
+  const [questions, setQuestion] = useState([]);
 
-const Faq = () => {
+  const fetchData = () => {
+    return fetch("http://localhost:5000/api/posts")
+      .then((response) => response.json())
+      .then((data) => setQuestion(data));
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, [])
+
+
   return (
     <div>
       {questions.length > 0 ? (
@@ -31,9 +25,9 @@ const Faq = () => {
           return (
             <div class="block max-w-m p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-black">
-                {element.question}
+                {element.title}
               </h5>
-              <p class="font-normal text-black ">{element.answer}</p>
+              <p class="font-normal text-black ">{element.body}</p>
             </div>
           );
         })
@@ -48,4 +42,4 @@ const Faq = () => {
   );
 };
 
-export default Faq;
+export default Req;
