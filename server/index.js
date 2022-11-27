@@ -25,6 +25,7 @@ app.get("/", (req, res) => {
 // Routes
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/request", require("./routes/request"));
+app.use("/api/posts",require("./routes/posts"));
 
 // Undefined Routes
 app.get("*", async (req, res) => {
