@@ -4,6 +4,7 @@ import TextLoop from "react-text-loop";
 import PathFindingVisualizer from "./PathFindingVisualizer/PathFindingVisualizer";
 import SortingVisualizer from "./SortingVisualizer/SortingVisualizer";
 import Faq from "./components/Faq";
+import Req from "./components/Req"
 import "./Visualizer.css";
 
 import jwt_decode from "jwt-decode";
@@ -81,7 +82,17 @@ export default class Visualizer extends Component {
           </div>
         </div>
       );
-    } else {
+    }else if (this.state.mode === "req") {
+      renderObj = (
+        <div class="welbotron">
+          <div class="container welc">
+            <h1 class="welcome">Requests</h1>
+            <Req />
+          </div>
+        </div>
+      );
+    } 
+    else {
       renderObj = (
         <div class="welbotron">
           <div class="container welc">
@@ -133,7 +144,7 @@ export default class Visualizer extends Component {
       );
     }
     let invisibleOrNot = "";
-    if (this.state.mode === "main" || this.state.mode === "faq")
+    if (this.state.mode === "main" || this.state.mode === "faq" || this.state.mode === "req")
       invisibleOrNot = " invisible";
     let algorithms = this.state.algorithms;
     return (
@@ -212,6 +223,21 @@ export default class Visualizer extends Component {
                   }}
                 >
                   FAQ
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#"
+                  class="text-lg text-gray-400 hover:text-gray-500"
+                  onClick={() => {
+                    if (!this.state.rendering) {
+                      this.setState({
+                        mode: "req",
+                      });
+                    }
+                  }}
+                >
+                 Requests
                 </a>
               </li>
 

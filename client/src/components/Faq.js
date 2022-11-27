@@ -28,6 +28,25 @@ const questions = [
   },
 ];
 
+const questions = [
+  {
+    question: "Cannot find a desired algorithm.",
+    answer: "Please submit a request for a new algorithm, by clicking the 'Request Algorithm' on the top right of the webpage.",
+  },
+  {
+    question: "Submission Request for new algorithm is denied.",
+    answer: "Please look at already existing algorithms or already exsiting requests for new algorithms by clickin on 'Requests'.",
+  },
+  {
+    question: "How to share a particular algorithm?",
+    answer: "Please click on 'Share Algorithm' on the top right of the webpage.",
+  },
+  {
+    question: "Does this work on mobile?",
+    answer: "Webpage is sutiable for all platforms including mobile.",
+  },
+];
+
 const Faq = () => {
   return (
     <div>
