@@ -30,7 +30,7 @@ const Login = () => {
   return (
     <>
       <body class="bg-blue-500">
-        <nav class="relative px-4 py-4 flex justify-between items-center bg-white">
+        <nav class="relative px-4 py-4 flex justify-between items-center bg-slate-200">
           <a class="text-3xl font-bold leading-none" href="/">
             AlgoViz
           </a>

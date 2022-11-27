@@ -127,7 +127,7 @@ export default class Visualizer extends Component {
     let algorithms = this.state.algorithms;
     return (
       <>
-        <nav class="relative px-4 py-4 flex justify-between items-center bg-gray">
+        <nav class="relative px-4 py-4 flex justify-between items-center bg-slate-200">
           <a class="text-3xl font-bold leading-none pr-10" href="/">
             AlgoViz
           </a>
