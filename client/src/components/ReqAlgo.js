@@ -1,5 +1,6 @@
 import { Tab } from "bootstrap";
-import React from "react";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ReqAlgo = () => {
   const handleChange = () => {
@@ -9,6 +10,22 @@ const ReqAlgo = () => {
   const handleSubmit = () => {
     return 0;
   };
+
+  const navigate = useNavigate();
+
+  const getToken = () => {
+    const token = sessionStorage.getItem("sessionToken");
+    if (!token) {
+      console.log(token);
+      alert("Please Login");
+      navigate("/");
+    }
+    return token;
+  };
+
+  useEffect(() => {
+    getToken();
+  }, []);
   return (
     <>
       <body class="bg-blue-500">

@@ -20,9 +20,9 @@ const App = () => {
         crossorigin="anonymous"
       ></link>
       <Routes>
-        <Route path="/" element=<Login /> />
-        <Route path="/home" element=<Home /> />
-        <Route path="/request" element=<ReqAlgo /> />
+        <Route exact path="/" element=<Login /> />
+        <Route exact path="/home" element=<Home /> />
+        <Route exact path="/request" element=<ReqAlgo /> />
       </Routes>
       <script
         src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
