@@ -16,6 +16,7 @@ router.post("/", async (req, res) => {
   const newPost = new Post(postField);
   try {
     const savedPost = await newPost.save();
+    console.log("Request Sent!");
     res.json(savedPost);
   } catch (err) {
     console.error(err.message);

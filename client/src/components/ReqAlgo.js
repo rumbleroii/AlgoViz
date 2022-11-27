@@ -30,8 +30,8 @@ const ReqAlgo = () => {
       );
 
       if (createPost) {
-        alert("Post Created");
-        navigate("/");
+        alert("Request Sent");
+        navigate("/home");
       }
     } catch (err) {
       console.log(err);
