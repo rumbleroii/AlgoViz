@@ -9,37 +9,40 @@ import { redirect, useNavigate } from "react-router-dom";
 
 import jwt_decode from "jwt-decode";
 
-const questions = [
-  {
-    question: "Test A",
-    answer: "Test B",
-  },
-  {
-    question: "Test D",
-    answer: "Test E",
-  },
-  {
-    question: "Test D",
-    answer: "Test E",
-  },
-  {
-    question: "Test D",
-    answer: "Test E",
-  },
-];
+// const questions = [
+//   {
+//     question: "Test A",
+//     answer: "Test B",
+//   },
+//   {
+//     question: "Test D",
+//     answer: "Test E",
+//   },
+//   {
+//     question: "Test D",
+//     answer: "Test E",
+//   },
+//   {
+//     question: "Test D",
+//     answer: "Test E",
+//   },
+// ];
 
 const questions = [
   {
     question: "Cannot find a desired algorithm.",
-    answer: "Please submit a request for a new algorithm, by clicking the 'Request Algorithm' on the top right of the webpage.",
+    answer:
+      "Please submit a request for a new algorithm, by clicking the 'Request Algorithm' on the top right of the webpage.",
   },
   {
     question: "Submission Request for new algorithm is denied.",
-    answer: "Please look at already existing algorithms or already exsiting requests for new algorithms by clickin on 'Requests'.",
+    answer:
+      "Please look at already existing algorithms or already exsiting requests for new algorithms by clickin on 'Requests'.",
   },
   {
     question: "How to share a particular algorithm?",
-    answer: "Please click on 'Share Algorithm' on the top right of the webpage.",
+    answer:
+      "Please click on 'Share Algorithm' on the top right of the webpage.",
   },
   {
     question: "Does this work on mobile?",
