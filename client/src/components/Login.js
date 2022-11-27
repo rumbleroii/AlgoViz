@@ -11,6 +11,10 @@ const setToken = (res) => {
   sessionStorage.setItem("sessionToken", res.credential);
 };
 
+const createAccount = () => {
+  
+}
+
 const Login = () => {
   const navigate = useNavigate();
 
@@ -34,7 +38,7 @@ const Login = () => {
               Welcome To AlgoViz
             </h2>
             <p className="mt-2 text-center text-sm text-gray-600 pb-5">
-              Login To Your Account
+              Register / Login To Your Account
             </p>
             <div className="flex justify-center">
               <GoogleOAuthProvider clientId="686237414426-i403mqs4n53kj8n3e7m59nobp91dks41.apps.googleusercontent.com">
