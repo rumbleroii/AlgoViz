@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import ReqAlgo from "./components/ReqAlgo";
 import Home from "./components/Home";
 import Login from "./components/Login";
+import Faq from "./components/Faq";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route exact path="/" element=<Login /> />
         <Route exact path="/home" element=<Home /> />
         <Route exact path="/request" element=<ReqAlgo /> />
+        <Route exact path="/faq" element=<Faq /> />
       </Routes>
       <script
         src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

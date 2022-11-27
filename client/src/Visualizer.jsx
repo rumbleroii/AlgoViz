@@ -3,6 +3,7 @@ import React, { Component, useState } from "react";
 import TextLoop from "react-text-loop";
 import PathFindingVisualizer from "./PathFindingVisualizer/PathFindingVisualizer";
 import SortingVisualizer from "./SortingVisualizer/SortingVisualizer";
+import Faq from "./components/Faq";
 import "./Visualizer.css";
 
 import jwt_decode from "jwt-decode";
@@ -71,6 +72,15 @@ export default class Visualizer extends Component {
           />
         </div>
       );
+    } else if (this.state.mode === "faq") {
+      renderObj = (
+        <div class="welbotron">
+          <div class="container welc">
+            <h1 class="welcome">Frequently Asked Questions (FAQ)</h1>
+            <Faq />
+          </div>
+        </div>
+      );
     } else {
       renderObj = (
         <div class="welbotron">
@@ -123,7 +133,8 @@ export default class Visualizer extends Component {
       );
     }
     let invisibleOrNot = "";
-    if (this.state.mode === "main") invisibleOrNot = " invisible";
+    if (this.state.mode === "main" || this.state.mode === "faq")
+      invisibleOrNot = " invisible";
     let algorithms = this.state.algorithms;
     return (
       <>
@@ -147,6 +158,21 @@ export default class Visualizer extends Component {
             <li>
               <a class="text-lg text-gray-400 hover:text-gray-500" href="/home">
                 Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="text-lg text-gray-400 hover:text-gray-500"
+                onClick={() => {
+                  if (!this.state.rendering) {
+                    this.setState({
+                      mode: "faq",
+                    });
+                  }
+                }}
+              >
+                FAQ
               </a>
             </li>
           </ul>
